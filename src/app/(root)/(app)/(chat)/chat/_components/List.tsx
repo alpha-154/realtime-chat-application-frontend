@@ -1,21 +1,28 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 export default function List({
+  currLoggedInUserUsername,
   userName,
   profileImage,
+  privateMessageId,
+  onClickFunction,
 }: {
+  currLoggedInUserUsername: string;
   userName: string;
   profileImage: string;
+  privateMessageId: string;
+  onClickFunction: ({currentUser, chatWithUser,  privateMessageId}: {currentUser: string, chatWithUser: string; privateMessageId: string}) => void;
 }) {
-  const router = useRouter();
+
   return (
     <div
-      onClick={() => {
-        router.push(`/chat-field/${userName}`);
-      }}
+      onClick={ () => onClickFunction({
+        currentUser: currLoggedInUserUsername,
+        chatWithUser: userName,
+        privateMessageId
+      })}
       className="w-full p-5 max-h-[300px] cursor-pointer flex items-center justify-start gap-4 border border-black rounded-md text-black"
     >
       {profileImage && (

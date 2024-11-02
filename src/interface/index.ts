@@ -27,4 +27,21 @@ export interface SearchUser {
 export interface connectedUsers {
   userName: string;
   profileImage: string;
+  privateMessageId: string;
+}
+
+export interface Message {
+  from: string;
+  to: string;
+  content: string;
+  isGroupMsg: boolean;
+ // groupMsgIdentifier?: string;
+  privateMsgIdentifier?: string;
+  createdAt: string;
+}
+
+export interface selectedUsersProps {
+  currentUser: string;
+  chatWithUser: string;
+  privateMessageId: string;
 }
